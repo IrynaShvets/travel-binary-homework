@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/travel-binary-homework/static/css/main.073c9b0a.css",
+    "main.js": "/travel-binary-homework/static/js/main.2cddeb20.js",
+    "static/js/787.fb285714.chunk.js": "/travel-binary-homework/static/js/787.fb285714.chunk.js",
+    "static/media/logo.svg": "/travel-binary-homework/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/travel-binary-homework/index.html",
+    "main.073c9b0a.css.map": "/travel-binary-homework/static/css/main.073c9b0a.css.map",
+    "main.2cddeb20.js.map": "/travel-binary-homework/static/js/main.2cddeb20.js.map",
+    "787.fb285714.chunk.js.map": "/travel-binary-homework/static/js/787.fb285714.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.2cddeb20.js"
+  ]
+}

@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { lazy, useState } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Navigation from './components/Navigation';
+import travel from './travel.json';
 
-function App() {
+const HomePage = lazy(() => import('./views/HomePage.js'));
+const RegisterPage = lazy(() => import('./views/RegisterPage.js'));
+const LoginPage = lazy(() => import('./views/LoginPage.js'));
+const TripPage = lazy(() => import('./views/TripPage.js'));
+const BookingsPage = lazy(() => import('./views/BookingsPage.js'));
+
+export default function App() {
+  const [trips, setTrips] = useState(travel);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<Navigation />}>
+        <Route index element={<HomePage trips={trips} />} />
+        <Route path="sing-up" element={<RegisterPage />} />
+        <Route path="sing-in" element={<LoginPage />} />
+        <Route path="trip/:tripId" element={<TripPage trips={trips} />} />
+        <Route path="bookings" element={<BookingsPage />} />
+      </Route>
+      <Route path="*" element={<Navigate to="/" />} />
+    </Routes>
   );
 }
-
-export default App;

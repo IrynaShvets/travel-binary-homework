@@ -1,6 +1,6 @@
 import { lazy, useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import Navigation from './components/Navigation';
+import Navigation from './components/Navigation/Navigation';
 import travel from './travel.json';
 
 const HomePage = lazy(() => import('./views/HomePage.js'));

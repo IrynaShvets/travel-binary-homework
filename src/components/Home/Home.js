@@ -1,6 +1,18 @@
+import { useState, useMemo } from 'react';
 import TripList from './TripList/TripList';
+import Filter from '../Filter/Filter';
 
 export default function Home({ trips }) {
+  const [filter, setFilter] = useState('');
+
+  const changeFilter = e => {
+    setFilter(e.currentTarget.value);
+  };
+
+  const getVisibleTrips = useMemo(() => {
+    return trips.filter(trip => trip.title.toLowerCase().includes(filter));
+  }, [filter, trips]);
+
   return (
     <>
       <main>
@@ -8,14 +20,7 @@ export default function Home({ trips }) {
         <section className="trips-filter">
           <h2 className="visually-hidden">Trips filter</h2>
           <form className="trips-filter__form">
-            <label className="trips-filter__search input">
-              <span className="visually-hidden">Search by name</span>
-              <input
-                name="search"
-                type="search"
-                placeholder="search by title"
-              />
-            </label>
+            <Filter value={filter} onChange={changeFilter} />
             <label className="select">
               <span className="visually-hidden">Search by duration</span>
               <select name="duration">
@@ -38,7 +43,7 @@ export default function Home({ trips }) {
         </section>
         <section className="trips">
           <h2 className="visually-hidden">Trips List</h2>
-          {trips && <TripList trips={trips} />}
+          <TripList trips={trips} trips={getVisibleTrips} />
         </section>
       </main>
     </>
